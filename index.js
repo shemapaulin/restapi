@@ -1,14 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRouter from "./src/Routes/userRoutes.js";
+
 dotenv.config();
 
 const app = express();
+
 const port = process.env.PORT;
 
-app.get("/", () => {
-  console.log("it's startinggggg........");
-});
+app.use(express.json());
+
+app.use("/api", userRouter);
 app.listen(port, () => {
   console.log(`app is lestening on server${port}`);
 });
